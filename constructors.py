@@ -18,10 +18,11 @@ class Movie(Video):
 
 
 
-class Tvshow(Video):
+""" Será implementado no futuro séries ao catalogo.
+class Tvshow(Video): 
     def __init__(self,title,duration,season,number_of_episodes,tv_station):
         Video.__init__(self, title, duration)
         self.season = season
         self.number_of_episodes = number_of_episodes
-        self.tv_station = tv_station
+        self.tv_station = tv_station"""
 
