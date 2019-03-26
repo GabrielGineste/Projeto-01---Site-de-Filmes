@@ -1,7 +1,7 @@
 import webbrowser
 
-#   Essa classe construtora irá criar toda a base
-#   para ser adcionado os filmes mais tarde.
+#   Classes construtoras que recebem os dados.
+#   são chamadas no arquivo content.py
 
 
 class Video():
@@ -22,7 +22,7 @@ class Movie(Video):
         webbrowser.open(self.trailer_youtube)
 
 
-#   para ser adcionado os filmes mais tarde.
+#   Para adcionar todos as séries mais tarde.
 class Tvshow(Video):
     def __init__(self, title, duration,
                  season, number_of_episodes, tv_station):

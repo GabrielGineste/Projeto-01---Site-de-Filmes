@@ -1,11 +1,12 @@
 import fresh_tomatoes
 import constructors
 
+#   Passando os dados que irão preencher a aplicação.
+#   Filmes recebem em ordem, Title, Duration, movie_Storyline,
+#                               poster_image, trailer_youtube.
 clube_da_luta = constructors.Movie("Clube da Luta", "2 Horas",
-                                   "The two bored men form an underground"
-                                   "club with strict rules "
-                                   "and fight other men who are fed up"
-                                   " with their mundane lives.",
+                                   "Dois homens entediados, formam um clube" +
+                                   " sem regras aonde lutam.",
                                    "https://ae01.alicdn.com/kf/HTB1vzb3" +
                                    "NFXXXXbiXFXXq6xXFXXXC/" +
                                    "Vintage-Retro-Papel-poster-anime-clube" +
@@ -21,16 +22,7 @@ creed2 = constructors.Movie("Creed 2",
                             "tragic match that stunned the world. " +
                             "Against the wishes of trainer Rocky Balboa, " +
                             "Apollo's son Adonis Johnson accepts a challenge" +
-                            " from Drago's son -- another " +
-                            "dangerous fighter. Under " +
-                            "guidance from Rocky, Adonis " +
-                            "trains for the showdown " +
-                            "of his life -- a date with " +
-                            "destiny that soon becomes " +
-                            "his obsession. Now, Johnson " +
-                            "and Balboa must confront " +
-                            "their shared legacy as the" +
-                            " past comes back to haunt each man.",
+                            " from Drago's son.",
                             "http://cdn.collider.com/wp-content/uploads/" +
                             "2018/10/creed-2-poster.jpg",
                             "https://www.youtube.com/" +
@@ -42,52 +34,17 @@ howsmovingcastle = constructors.Movie("Howls Moving Castle",
                                       "her late father s hat shop, but all " +
                                       "that changes when she befriends " +
                                       "wizard Howl, who lives in a magical " +
-                                      "flying castle. However," +
-                                      " the evil Witch " +
-                                      "of Waste takes issue " +
-                                      "with their budding" +
-                                      " relationship and " +
-                                      "casts a spell on young " +
-                                      "Sophie, which ages " +
-                                      "her prematurely. Now " +
-                                      "Howl must use all " +
-                                      "his magical talents to" +
-                                      " battle the jealous " +
-                                      "hag and return Sophie" +
-                                      " to her former" +
-                                      " youth and beauty.",
+                                      "flying castle.",
                                       "https://i.etsystatic.com/18051038" +
                                       "/r/il/f0daa7/1628374577/il_full" +
                                       "xfull.1628374577_6l1q.jpg",
                                       "https://youtube.com/watch?v" +
                                       "=iwROgK94zcM")
 
-piratasdocaribe = constructors.Movie("Piratas do Caribe",
-                                     "2'5 Horas",
-                                     "Capt. Jack Sparrow arrives at Port " +
-                                     "Royal in the Caribbean without a ship" +
-                                     " or crew. His timing is inopportune," +
-                                     " however, because later that evening " +
-                                     "the town is besieged by a pirate ship.",
-                                     "https://www.cafecomfilme.com.br/media" +
-                                     "/k2/items/cache/89e936ab1af480cb8fb" +
-                                     "eb534c0a342d0_XL.jpg?t=1531610123",
-                                     "https://www.youtube.com/watch?v=" +
-                                     "DGnatLS9Ohw")
-
 ctrainersdragao = constructors.Movie("Como Treinar seu Dragão 3",
                                      "1'5 Horas",
-                                     "From DreamWorks Animation comes a" +
-                                     " surprising tale about growing up, " +
-                                     "finding the courage to face" +
-                                     " the unknown…" +
-                                     "and how nothing can ever " +
-                                     "train you to let go." +
-                                     " What began as an unlikely " +
-                                     "friendship between an " +
-                                     "adolescent Viking and a " +
-                                     "fearsome Night Fury dragon " +
-                                     "has become an epic adventure ",
+                                     "Um Menino e seu Dragão amigo saem" +
+                                     "em várias aventuras.",
                                      "https://www.cafecomfilme.com.br/media/" +
                                      "k2/items/cache/492cd4eee0ce1" +
                                      "274967cb54388" +
@@ -95,6 +52,22 @@ ctrainersdragao = constructors.Movie("Como Treinar seu Dragão 3",
                                      "https://www.youtube.com/watch?v=" +
                                      "P5GAg92efK0")
 
+atomica = constructors.Movie("Atômica",
+                             "1'5 Horas",
+                             "Sensual and savage, Lorraine Broughton " +
+                             "is the most elite spy in MI6, an" +
+                             " agent who's willing to use all" +
+                             " of her lethal skills to stay " +
+                             "alive during an impossible mission.",
+                             "https://www.metagalaxia.com." +
+                             "br/wp-content/uploads/2017/" +
+                             "09/atomica-poster-1.jpg",
+                             "https://www.youtube.com/" +
+                             "watch?v=CpF1ejZeLsE")
+
+#   Aqui são colocados todos os objetos que estão inseridos a cima.
+#   E serão executados na exibição da aplicação.
 movies = [clube_da_luta, creed2, howsmovingcastle,
-          piratasdocaribe, ctrainersdragao]
+          ctrainersdragao, atomica]
+#   Função que executa a criação do arquivo HTML.
 fresh_tomatoes.open_movies_page(movies)

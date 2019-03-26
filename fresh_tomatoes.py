@@ -6,9 +6,8 @@ import re
 # Styles and scripting for the page
 main_page_head = '''
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title>Prime Flix.</title>
     
     <!-- Bootstrap 3 -->
@@ -17,8 +16,10 @@ main_page_head = '''
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
-        body {
+         body {
             padding-top: 80px;
+            background-color: #8EE4AF;
+            color: #fff;
         }
         #trailer .modal-dialog {
             margin-top: 200px;
@@ -40,8 +41,11 @@ main_page_head = '''
             padding-top: 20px;
         }
         .movie-tile:hover {
-            background-color: #EEE;
+            background-color: #379683;
             cursor: pointer;
+        }
+        .movie-tile img {
+            box-shadow: 7px 7px 12px #222;
         }
         .scale-media {
             padding-bottom: 56.25%;
@@ -56,6 +60,12 @@ main_page_head = '''
             top: 0;
             background-color: white;
         }
+        .navbar {
+              margin-left: 7em;
+              margin-right: 7em;
+        }
+        
+        
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -103,15 +113,45 @@ main_page_content = '''
     </div>
 
     <!-- Main Page Content -->
-    <div class="container">
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Prime Flix.</a>
-          </div>
-        </div>
-      </div>
-    </div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Mudar Navegação</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">PrimeFlix</a>
+            </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Filmes <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Séries</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Categorias/Páginas <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Ação</a></li>
+                <li><a href="#">Romance</a></li>
+                <li><a href="#">Fantasia</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Nosso Fórum</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Nossos Reviews</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Procurar Filmes e Séries">
+            </div>
+            <button type="submit" class="btn btn-default">Buscar</button>
+          </form>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
     <div class="container">
       {movie_tiles}
     </div>
@@ -122,9 +162,10 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+<div class="col-md-8 col-lg-3 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
+    <p>{movie_storyline} <br> Duração: {movie_duration}</p>
 </div>
 '''
 
@@ -145,7 +186,9 @@ def create_movie_tiles_content(movies):
         content += movie_tile_content.format(
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
+            trailer_youtube_id=trailer_youtube_id,
+            movie_storyline=movie.movie_storyline,
+            movie_duration=movie.duration
         )
     return content
 
@@ -156,7 +199,7 @@ def open_movies_page(movies):
 
     # Replace the movie tiles placeholder generated content
     rendered_content = main_page_content.format(
-        movie_tiles=create_movie_tiles_content(movies))
+    movie_tiles=create_movie_tiles_content(movies))
 
     # Output the file
     output_file.write(main_page_head + rendered_content)
